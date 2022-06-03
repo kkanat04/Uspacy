@@ -24,6 +24,6 @@ export const classname = {
   },
   errorText: {
     color: 'red',
-    fontSize: 15
-  }
+    fontSize: 15,
+  },
 };

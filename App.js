@@ -5,7 +5,6 @@ import {NavigationContainer} from '@react-navigation/native';
 import {classname} from './src/styles/styles';
 
 const App = () => {
-
   return (
     // <Provider store={store}>
     <SafeAreaView style={classname.flex}>

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Text, TouchableOpacity, View } from "react-native";
-import { classname } from "../../styles/styles";
+import {Text, TouchableOpacity, View} from 'react-native';
+import {classname} from '../../styles/styles';
 
 const Footer = ({navigation}) => {
   return (
