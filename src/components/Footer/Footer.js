@@ -1,8 +1,10 @@
 import React from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
-import {classname} from '../../styles/styles';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { classname } from '../../styles/styles';
 
-const Footer = ({navigation}) => {
+function Footer() {
+  const navigation = useNavigation();
   return (
     <View style={classname.row_around}>
       <TouchableOpacity onPress={() => navigation.navigate('HomeStack')}>
@@ -11,11 +13,8 @@ const Footer = ({navigation}) => {
       <TouchableOpacity onPress={() => navigation.navigate('NewsStack')}>
         <Text>News</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('AuthStack')}>
-        <Text>Auth</Text>
-      </TouchableOpacity>
     </View>
   );
-};
+}
 
 export default Footer;

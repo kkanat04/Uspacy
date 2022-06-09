@@ -1,31 +1,40 @@
-import React, {useState} from 'react';
-import {TextInput, TouchableOpacity, View, Text} from 'react-native';
-import {classname} from '../../styles/styles';
-import {Post, setToken} from '../../api/query';
-import {storeData} from '../../api/storage';
+import React, { useState } from 'react';
+import {
+  TextInput,
+  TouchableOpacity,
+  View,
+  Text,
+} from 'react-native';
+import { useDispatch } from 'react-redux';
+import { classname } from '../../styles/styles';
+import { post, setToken } from '../../modules/axios/query';
+import { setItem } from '../../api/storage';
 
-const SignIn = () => {
+function SignIn() {
   const [data, setData] = useState({
     email: '',
     password: '',
   });
+  const dispatch = useDispatch();
 
-  const [err, setErr] = useState([]);
+  const [err, setErr] = useState('');
 
   const edit = (prop, val) => {
     setErr('');
-    setData({...data, [prop]: val});
+    setData({ ...data, [prop]: val });
   };
 
   const signIn = () => {
-    Post(
-      'auth',
-      data,
-      res => {
-        setToken(res.jwt);
-        storeData(res.jwt);
-      },
-      e => setErr(e?.response?.data),
+    dispatch(
+      post(
+        'auth',
+        data,
+        (res) => {
+          setToken(res.jwt);
+          setItem(res);
+        },
+        (err) => setErr(err?.response?.data || err),
+      ),
     );
   };
 
@@ -33,14 +42,14 @@ const SignIn = () => {
     <View style={classname.sigIn}>
       <TextInput
         placeholder="Email"
-        onChangeText={text => {
+        onChangeText={(text) => {
           edit('email', text);
         }}
       />
 
       <TextInput
         placeholder="Password"
-        onChangeText={text => {
+        onChangeText={(text) => {
           edit('password', text);
         }}
       />
@@ -56,6 +65,6 @@ const SignIn = () => {
       </TouchableOpacity>
     </View>
   );
-};
+}
 
 export default SignIn;

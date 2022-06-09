@@ -1,7 +1,7 @@
 import React from 'react';
 import * as TalkRn from '@talkjs/react-native';
 
-const Chat = () => {
+function Chat() {
   const me = {
     id: '123456789',
     name: 'Askar',
@@ -32,6 +32,6 @@ const Chat = () => {
       <TalkRn.Chatbox conversationBuilder={conversationBuilder} />
     </TalkRn.Session>
   );
-};
+}
 
 export default Chat;
