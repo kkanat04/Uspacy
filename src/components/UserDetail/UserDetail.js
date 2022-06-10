@@ -16,6 +16,7 @@ function UserDetail({ route }) {
     };
   }, []);
 
+
   return (
     <View>
       {
