@@ -19,6 +19,8 @@ module.exports = {
     'react',
   ],
   rules: {
+    'react/no-array-index-key': 0,
+    'react/prop-types': 0,
     'no-param-reassign': 'off',
     'no-console': 'off',
     'import/prefer-default-export': 'off',

@@ -6,18 +6,18 @@ import TabToken from '../../modules/navigation/TabToken';
 import { getItem } from '../../api/storage';
 
 function Main() {
-  const { user } = useSelector((state) => state.authSlice);
+  const { token } = useSelector((state) => state.authSlice);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!Object.keys(user).length) {
+    if (!Object.keys(token).length) {
       dispatch(getItem());
     }
-  }, [user]);
+  }, [token]);
 
   return (
     <NavigationContainer>
-      {Object.keys(user).length ? <TabToken /> : <MyStack />}
+      {Object.keys(token).length ? <TabToken /> : <MyStack />}
     </NavigationContainer>
   );
 }

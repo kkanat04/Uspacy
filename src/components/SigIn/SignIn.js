@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { classname } from '../../styles/styles';
-import { post, setToken } from '../../modules/axios/query';
+import { auth } from '../../modules/axios/query';
 import { setItem } from '../../api/storage';
 
 function SignIn() {
@@ -26,11 +26,10 @@ function SignIn() {
 
   const signIn = () => {
     dispatch(
-      post(
+      auth(
         'auth',
         data,
         (res) => {
-          setToken(res.jwt);
           setItem(res);
         },
         (err) => setErr(err?.response?.data || err),

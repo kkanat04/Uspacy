@@ -1,11 +1,12 @@
 import Storage from 'react-native-storage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { SET_TOKEN } from '../modules/redux/slices/authSlice';
+import { setToken } from '../modules/axios/query';
 
 const storage = new Storage({
   size: 1000,
   storageBackend: AsyncStorage,
-  defaultExpires: 0,
+  defaultExpires: null,
   enableCache: true,
   sync: {},
 });
@@ -32,6 +33,7 @@ export const getItem = () => (dispatch) => {
   })
     .then((res) => {
       res = JSON.parse(res);
+      setToken(res.jwt);
       dispatch(SET_TOKEN(res));
     })
     .catch((err) => {

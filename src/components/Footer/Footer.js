@@ -13,6 +13,9 @@ function Footer() {
       <TouchableOpacity onPress={() => navigation.navigate('NewsStack')}>
         <Text>News</Text>
       </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('UsersListStack')}>
+        <Text>UsersList</Text>
+      </TouchableOpacity>
     </View>
   );
 }

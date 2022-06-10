@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Footer from '../../components/Footer/Footer';
 import HomeStack from './stackCustom/HomeStack';
 import NewsStack from './stackCustom/NewsStack';
+import UsersListStack from './stackCustom/UsersListStack';
 
 const MyTab = createBottomTabNavigator();
 
@@ -20,6 +21,11 @@ function TabToken() {
       <MyTab.Screen
         name="NewsStack"
         component={NewsStack}
+        options={{ headerShown: false }}
+      />
+      <MyTab.Screen
+        name="UsersListStack"
+        component={UsersListStack}
         options={{ headerShown: false }}
       />
     </MyTab.Navigator>
